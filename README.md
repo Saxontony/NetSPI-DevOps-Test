@@ -2,10 +2,31 @@
 
 Through AWS console, provision an Elastic IP. Assign a tag “Project” with value “NetSPI_EIP” to it. Once it's available, write a Terraform code to implement following infrastructure resources:
 
+1. 
+                Created an Elastic IP
+                "Tag": 
+                    "Key": “Project”
+                    "Value": “NetSPI_EIP” 
+
+                Allocated: 54.235.138.246
+                Allocation ID: eipalloc-020a23a6c96df045e
+
 -   _S3 bucket with private access permissions_
+
+2. Created via file s3.tf
+
 -   _EFS volume_
+
+3. Created via file efs.tf
+
 -   _An EC2 instance with SSH access_
+
+4. Created via file ec2.tf
+
 -   _All required resources like VPC, Subnets, Security Groups etc. to provision above mentioned resources_
+
+5. created via file network-sg.tf
+
 
 ### These resources should fulfil following requirements:
 - _An elastic IP provisioned in the step #1 should be assigned to the provisioned EC2 instance for its public IP_
