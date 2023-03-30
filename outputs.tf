@@ -22,6 +22,6 @@ output "sg_id" {
 }
 
 #Subnet ID
-output "subnetid1" {
-  value = aws_subnet.main-subnet[*].id
+output "subnet_id" {
+  value = aws_subnet.main-subnet.id
 }

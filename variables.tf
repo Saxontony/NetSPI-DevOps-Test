@@ -14,7 +14,6 @@ variable "dns-support" {
 }
 
 variable "subnetcidr" {
-    type = list
     default = "172.16.0.0/26"
 }
 

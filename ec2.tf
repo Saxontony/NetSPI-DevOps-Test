@@ -2,8 +2,8 @@
 resource "aws_instance" "ec2" {
   
   ami = var.ami_id["linux"]
-  instance_type = var.instance_type
-  subnet_id = var.subnet_id
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.main-subnet.id
   security_groups = [aws_security_group.sg.id]
   key_name = aws_key_pair.deployer.key_name
   iam_instance_profile = "aws_iam_instance_profile.ec2_profile.name"

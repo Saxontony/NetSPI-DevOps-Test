@@ -13,13 +13,12 @@ resource "aws_efs_file_system" "efs" {
 # Creating Mount target of EFS
 resource "aws_efs_mount_target" "mount" {
 file_system_id = aws_efs_file_system.efs.id
-subnet_id      = aws_subnet.main-subnet[*].id
-security_groups = aws_security_group.sg.id
+subnet_id      = aws_subnet.main-subnet.id
+security_groups = [aws_security_group.sg.id]
 }
 
 resource "aws_efs_access_point" "test" {
   file_system_id = aws_efs_file_system.efs.id
-  root_directory = "/data/test"
 }
 
 #mounting on boot to /data/test

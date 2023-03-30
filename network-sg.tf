@@ -14,8 +14,7 @@ resource "aws_vpc" "main-vpc" {
 #subnets creation
 resource "aws_subnet" "main-subnet" {
   vpc_id     = aws_vpc.main-vpc.id
-  cidr_block = var.subnetcidr[count.index]
-  count = length(var.subnetcidr)
+  cidr_block = var.subnetcidr
   
   tags = {
     Name   = "NetSPI"
@@ -48,7 +47,7 @@ resource "aws_route_table" "route2igw" {
 #associate public subnets to the route
 
 resource "aws_route_table_association" "a" {
-  subnet_id      = aws_subnet.main-subnet[0].id
+  subnet_id      = aws_subnet.main-subnet.id
   route_table_id = aws_route_table.route2igw.id
 }
 
@@ -57,7 +56,7 @@ resource "aws_route_table_association" "a" {
 resource "aws_security_group" "sg" {
   name        = "dynamic-sg"
   description = "Ingress for Vault"
-  vpc_id = var.vpc_id
+  vpc_id = aws_vpc.main-vpc.id
   dynamic "ingress" {
     for_each = var.port-sg
     iterator = port
