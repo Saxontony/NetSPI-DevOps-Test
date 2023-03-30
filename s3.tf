@@ -1,7 +1,7 @@
 #creating s3 bucket with private access
 
 resource "aws_s3_bucket" "s3" {
-  bucket = "NetSPI-Kenny-Private-Bucket"
+  bucket = "netspi-kenny-private-bucket"
 
   tags = {
     Name   = "NetSPI"
